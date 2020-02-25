@@ -37,8 +37,8 @@ namespace CafeManagement.Dao
                     command.Parameters.AddWithValue("@Name", model.Name);
                     command.Parameters.AddWithValue("@Price", model.Price);
                     command.Parameters.AddWithValue("@Mark", model.Mark);
-                    command.Parameters.AddWithValue("@IsFood", model.IsFood == true ? 1 : 0);
-                    command.Parameters.AddWithValue("@Name", model.Name);
+                    //command.Parameters.AddWithValue("@IsFood", model.IsFood == true ? 1 : 0);
+                    //command.Parameters.AddWithValue("@Name", model.Name);
 
                 }
                 catch (Exception) 

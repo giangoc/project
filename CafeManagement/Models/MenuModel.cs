@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public float Price { get; set; }
         public string Mark { get; set; }
-        public int IsFood { get; set; }
-        public int IsActive { get; set; }
+        public bool IsFood { get; set; }
+        public bool IsActive { get; set; }
     }
 }
