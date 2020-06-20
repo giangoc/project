@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using CafeManagement.Models;
 using System.Web.Mvc;
+
 
 namespace CafeManagement.Controllers
 {
-    public class MenuManagementController : Controller
+    public class MenuController : Controller
     {
         // GET: MenuManagement
         public ActionResult Index()
@@ -15,6 +13,12 @@ namespace CafeManagement.Controllers
         }
 
         public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(MenuModel model)
         {
             return View();
         }
