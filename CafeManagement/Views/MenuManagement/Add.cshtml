@@ -1,0 +1,89 @@
+﻿@model CafeManagement.Models.MenuModel
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="col-md-12 text-center" id="form">
+    <label class="my-title">
+        <img src="~/Content/Image/food-add-55.png" />
+        Thêm mới đồ ăn/uống
+    </label>
+    <div class="my-body">
+        <div class="row">
+            <div class="col-md-2 text-right bold">
+                <label class="required">*</label>
+                <label>Mã món</label>
+            </div>
+            <div class="col-md-3 text-left">
+                @Html.TextBoxFor(model => model.Id, new { @class = "textbox-readonly", title = "Mã được tạo tự động!", @readonly = true })
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2 text-right bold">
+                <label class="required">*</label>
+                <label>Tên món</label>
+            </div>
+            <div class="col-md-3 text-left">
+                @Html.TextBoxFor(model => model.Name, new { @class = "textbox-custom text-required" })
+            </div>
+        </div>
+        <div class="row space-row">
+            <div class="col-md-2 text-right bold">
+                <label class="required">*</label>
+                <label>Giá tiền</label>
+            </div>
+            <div class="col-md-3 text-left">
+                @Html.TextBoxFor(model => model.Price, new { @class = "textbox-custom text-required" })
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2 text-right bold">
+                <label>Loại</label>
+            </div>
+            <div class="col-md-3 text-left">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="customRadio" name="IsFood" value="0" checked>
+                    <label class="custom-control-label" for="customRadio">Đồ uống</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="customRadio2" name="IsFood" value="1">
+                    <label class="custom-control-label" for="customRadio2">Đồ ăn</label>
+                </div>
+            </div>
+        </div>
+        <div class="row space-row">
+            <div class="col-md-2 text-right bold">
+                <label>Trạng thái</label>
+            </div>
+            <div class="col-md-3 text-left custom-control custom-switch">
+                @Html.CheckBoxFor(model => model.IsActive, new { @class = "custom-control-input checkbox-custom", @id = "switch1", @checked = true })
+                <label class="custom-control-label" for="switch1">Kích hoạt</label>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        <div class="row space-row">
+            <div class="col-md-2 text-right bold">
+                <label>Ghi chú</label>
+            </div>
+            <div class="col-md-9 text-left">
+                @Html.TextAreaFor(model => model.Mark, new { @class = "textarea-custom" })
+            </div>
+        </div>
+        <div class="row space-row">
+            <div class="col-md-11 text-right">
+                <button type="button" id="refresh" class="btn btn-outline-info"><i class="fas fa-retweet"></i>&nbsp;Làm lại</button>
+                &nbsp;
+                <button type="button" id="save" class="btn btn-info"><i class="fa fa-save"></i>&nbsp;Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#Id').tooltip();
+    });  
+
+    $("#Price").keyup(function () {
+        $("#Price").val(formatNumber($("#Price").val()));
+    });
+
+   
+</script>

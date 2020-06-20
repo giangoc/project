@@ -22,12 +22,12 @@ function requiredValid(id) {
         var newClass = oldClass.substring(0, oldClass.indexOf("-") + 1).concat("valid text-required");
         $(id).popover({ content: "Bắt buộc nhập" });
         $(id).popover("enable");
-        $(id).popover("show");        
+        $(id).popover("show");
     }
     else {
         var newClass = oldClass.substring(0, oldClass.indexOf("-") + 1).concat("correct text-required");
         $(id).popover("hide");
-        $(id).popover("disable");      
+        $(id).popover("disable");
     }
     $(id).removeClass(oldClass).addClass(newClass);
     // Nếu allow all validate sẽ mở nút save
@@ -38,7 +38,6 @@ function requiredValid(id) {
         $("#save").attr("disabled", true);
     }
 }
-
 
 function formatNumber(n) {
     return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
