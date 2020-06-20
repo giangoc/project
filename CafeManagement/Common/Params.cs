@@ -6,8 +6,8 @@ namespace CafeManagement.Common
     {
         public string connect = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
 
-        public int successCode = 0;
-        public int failCode = 1;
-        public int expCode = -1;
+        public int success = 0;
+        public int fail = 1;
+        public int exception = -1;
     }
 }
