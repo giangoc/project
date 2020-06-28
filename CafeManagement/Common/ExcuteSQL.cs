@@ -1,6 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Configuration;
 using System.Linq;
 
 namespace CafeManagement.Common
@@ -10,15 +11,15 @@ namespace CafeManagement.Common
         public Params commonParam = new Params();
         public int ExcuteNonQuery(string query, Dictionary<string, object> param)
         {
-            SqlConnection connection = new SqlConnection(commonParam.connect);
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings["MySQLConnection"].ConnectionString;
             connection.Open();
-            SqlCommand command = new SqlCommand("", connection);
-            SqlTransaction trans = connection.BeginTransaction();
-            command.Connection = connection;
-            command.Transaction = trans;
+            MySqlCommand command = new MySqlCommand ();
+            MySqlTransaction trans = connection.BeginTransaction();
             try
             {
-
+                command.Connection = connection;
+                command.Transaction = trans;
                 command.CommandText = query;
                 for (int i = 0; i < param.Count; i++)
                 {
@@ -35,7 +36,7 @@ namespace CafeManagement.Common
             }
             finally
             {
-                connection.Close();
+               connection.Close();
             }
         }
     }

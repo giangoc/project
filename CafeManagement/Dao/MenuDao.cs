@@ -8,10 +8,14 @@ namespace CafeManagement.Dao
     public class MenuDao
     {
         ExcuteSQL excute = new ExcuteSQL();
+        Dictionary<string, object> param;
+        StringBuilder query;
+
         public int Add(MenuModel model)
         {
-            Dictionary<string,object> param = new Dictionary<string, object>();
-            StringBuilder query = new StringBuilder();
+            param = new Dictionary<string, object>();
+            query = new StringBuilder();
+
             query.Append("INSERT INTO `menu` (");
             query.Append("  `Code`,");
             query.Append("  `Name`,");
