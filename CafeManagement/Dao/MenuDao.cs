@@ -43,5 +43,18 @@ namespace CafeManagement.Dao
 
             return excute.ExcuteNonQuery(query.ToString(), param);
         }
+
+        public string GetCode(string code)
+        {
+            param = new Dictionary<string, object>();
+            query = new StringBuilder();
+
+            query.Append("SELECT MAX(`Code`) FROM `menu` ");
+            query.Append("  WHERE SUBSTRING(`Code`,1,1) = @Code");
+
+            param.Add("Code", code);
+
+            return excute.ExecuteScalar(query.ToString(), param).ToString();
+        }
     }
 }

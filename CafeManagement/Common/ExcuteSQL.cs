@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Ajax.Utilities;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,7 +13,7 @@ namespace CafeManagement.Common
         public int ExcuteNonQuery(string query, Dictionary<string, object> param)
         {
             MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["MySQLConnection"].ConnectionString;
+            connection.ConnectionString = commonParam.connectionString;
             connection.Open();
             MySqlCommand command = new MySqlCommand ();
             MySqlTransaction trans = connection.BeginTransaction();
@@ -38,6 +39,25 @@ namespace CafeManagement.Common
             {
                connection.Close();
             }
+        }
+
+        public object ExecuteScalar(string query, Dictionary<string, object> param)
+        {
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = commonParam.connectionString;
+            connection.Open();
+            MySqlCommand command = new MySqlCommand();
+
+            command.Connection = connection;
+            command.CommandText = query;
+            for (int i = 0; i < param.Count; i++)
+            {
+                command.Parameters.AddWithValue(param.Keys.ElementAt(i), param[param.Keys.ElementAt(i)]);
+            }
+            object result = command.ExecuteScalar();
+            connection.Close();
+            return result;
+
         }
     }
 }
