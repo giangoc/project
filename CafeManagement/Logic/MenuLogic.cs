@@ -9,10 +9,9 @@ namespace CafeManagement.Logic
 
         public string CreateCode(string isFood)
         {
-            string result = string.Empty;
             string code = isFood == "0" ? "F" : "D";
-            result = dao.GetCode(code);
-            if (String.IsNullOrEmpty(result))
+            string result = dao.GetCode(code);
+            if (string.IsNullOrEmpty(result))
                 code += "001";
             else
                 code += (Convert.ToInt32(result.Substring(1, 3)) + 1).ToString("000");

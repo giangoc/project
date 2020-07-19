@@ -7,8 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/db6f0d4653.js" crossorigin="anonymous"></script>
     <link href="~/Content/MyStyle.css" rel="stylesheet" />
     <script src="~/Scripts/myScript.js"></script>
 </head>
@@ -17,12 +15,13 @@
         <a class="navbar-brand" href="#">Logo</a>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link-custom dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> <i class="fas fa-bars"></i>
+                <a class="nav-link-custom dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <i class="fas fa-bars"></i>
                     Danh mục
                 </a>
                 <div class="dropdown-menu dropdown-custom">
-                    <a class="dropdown-item item-custom" href="@Url.Action("Add", "MenuManagement")">
-                        <img src="https://img.icons8.com/bubbles/25/000000/food.png">
+                    <a class="dropdown-item item-custom" href="@Url.Action("Add", "Menu")">
+                        <img src="~/Content/Image/food-25.png" />
                         Món ăn
                     </a>
                     <a class="dropdown-item item-custom" href="#">Link 2</a>
@@ -31,18 +30,33 @@
             </li>
         </ul>
     </nav>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="container">
-                @RenderBody()
+    @{
+        if (ViewBag.Flat == 1)
+        {
+            //Format div cho form search
+            <div class="row">
+                <div class="col-md-12" style="padding:10px">
+                    @RenderBody()
+                </div>
             </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-    
+        }
+        else
+        {
+            //Format div cho form add,edit
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="container">
+                        @RenderBody()
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        }
+    }
+
     <footer class="fixed-bottom">
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <p>&copy; @DateTime.Now.Year - My Application</p>
     </footer>
     @RenderSection("scripts", required: false)
 </body>

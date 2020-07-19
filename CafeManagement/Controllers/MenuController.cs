@@ -13,17 +13,20 @@ namespace CafeManagement.Controllers
         // GET: MenuManagement
         public ActionResult Index()
         {
+            ViewBag.Flat = 1;
             return View();
         }
 
         public ActionResult Add()
         {
+            ViewBag.Flat = 2;
             return View();
         }
 
         [HttpPost]
         public ActionResult Add(MenuModel model)
-        {          
+        {
+            ViewBag.Flat = 2;
             model.Price = float.Parse(model.PriceString.Replace(",", ""));
             model.IsActiveString = model.IsActive == true ? "0" : "1";
             model.Code = logic.CreateCode(model.IsFood);

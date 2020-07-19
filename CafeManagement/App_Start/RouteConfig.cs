@@ -16,7 +16,7 @@ namespace CafeManagement
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "MenuManagement", action = "Add", id = UrlParameter.Optional }
+                defaults: new { controller = "MenuManagement", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
