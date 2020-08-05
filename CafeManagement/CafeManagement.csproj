@@ -134,7 +134,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Image\checkmark-24.png" />
+    <Content Include="Content\Image\checkmark-96.png" />
+    <Content Include="Content\Image\food-25.png" />
     <Content Include="Content\Image\food-add-55.png" />
+    <Content Include="Content\Image\search-55.png" />
     <Content Include="Content\Image\warning.png" />
     <Content Include="Content\MyStyle.css" />
     <Content Include="favicon.ico" />

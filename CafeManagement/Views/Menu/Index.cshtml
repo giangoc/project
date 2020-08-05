@@ -9,49 +9,73 @@
         Tìm kiếm đồ ăn/uống
     </label>
     <div class="my-body">
-        <input class="textbox-custom-search" id="myInput" type="text" placeholder="Search..">
-        <table class="table table-bordered space-row">
+        <input class="textbox-custom-search" id="myInput" type="text" placeholder="Tìm kiếm...">
+        <table class="table table-borderless space-row">
             <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
+                <tr class="d-flex">
+                    <th class="col-1">STT</th>
+                    <th class="col-1">Mã món</th>
+                    <th class="col-3">Tên món</th>
+                    <th class="col-2">Giá tiền</th>
+                    <th class="col-1">Đồ ăn</th>
+                    <th class="col-1">Đồ uống</th>
+                    <th class="col-3">Ghi chú</th>
                 </tr>
             </thead>
             <tbody id="myTable">
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
+                <tr style="display:flex">
+                    <th class="col-1 normal">1</th>
+                    <th class="col-1 normal">D001</th>
+                    <th class="col-3 normal">Cà phê sữa</th>
+                    <th class="col-2 normal">20,000</th>
+                    <th class="col-1 normal">
+                    </th>
+                    <th class="col-1 normal" style="margin-left:7px">
+                        <img src="~/Content/Image/checkmark-24.png" />
+                    </th>
+                    <th class="col-3 normal">Cà phê + sữa + đá</th>
                 </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@mail.com</td>
+                <tr  style="display:flex">
+                    <th class="col-1 normal">1</th>
+                    <th class="col-1 normal">D002</th>
+                    <th class="col-3 normal">Cà phê đen đá/nóng</th>
+                    <th class="col-2 normal">15,000</th>
+                    <th class="col-1 normal">
+
+                    </th>
+                    <th class="col-1 normal" style="margin-left:7px">
+                        <img src="~/Content/Image/checkmark-24.png" />
+                    </th>
+                    <th class="col-3 normal">Cà phê + đường + đá</th>
                 </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@greatstuff.com</td>
+                <tr  style="display:flex">
+                    <th class="col-1 normal">3</th>
+                    <th class="col-1 normal">D003</th>
+                    <th class="col-3 normal">Trà xanh matcha</th>
+                    <th class="col-2 normal">25,000</th>
+                    <th class="col-1 normal">
+                    </th>
+                    <th class="col-1 normal" style="margin-left:7px">
+                        <img src="~/Content/Image/checkmark-24.png" />
+                    </th>
+                    <th class="col-3 normal">Trà xanh matcha Nhật Bản + sữa tươi</th>
                 </tr>
-                <tr>
-                    <td>Anja</td>
-                    <td>Ravendale</td>
-                    <td>a_r@test.com</td>
-                </tr>
+
             </tbody>
         </table>
     </div>
 </div>
 <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            debugger;
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                debugger;
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
     });
-  });
-});
 </script>
 
 

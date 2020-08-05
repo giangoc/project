@@ -1,11 +1,12 @@
-﻿footer {
+﻿/*#region Common layout*/
+footer {
     height: 18px;
     width: 100%;
     color: black;
     text-align: left;
     font-size: 12px;
     font-weight: bold;
-    background-color:orangered;
+    background-color: orangered;
 }
 
 .my-title {
@@ -16,6 +17,43 @@
     text-shadow: 1px 1px #ff0000;
     margin-top: 15px;
 }
+.my-body {
+    font-size: 14px;
+    color: brown;
+    margin-top: 15px;
+}
+
+.dropdown-custom {
+    border: 1px solid #D2691E !important;
+}
+
+/*custom các item trên thanh menu */
+.item-custom {
+    font-size: 14px;
+    color: brown;
+}
+
+    .item-custom:hover {
+        background-color: #FFFFF0;
+        color: #8B4513;
+    }
+
+.nav-custom {
+    background-color: #FFFFF0;
+}
+
+.nav-link-custom {
+    color: #CD853F;
+}
+
+a:hover {
+    color: #CD853F !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+}
+/*#endregion */
+
+/*#region input custom*/
 
 .textbox-custom {
     border: 1px solid #d74423;
@@ -49,6 +87,7 @@
     height: 30px;
     padding: 5px;
 }
+
     .textbox-readonly:focus {
         outline: 1px solid #f1b5a7;
     }
@@ -65,6 +104,7 @@
     background-position: right calc(.375em + .1875rem) center;
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
 }
+
     .textbox-valid:focus {
         outline: 1px solid #ff8080;
     }
@@ -80,6 +120,7 @@
     background-position: right calc(.375em + .1875rem) center;
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
 }
+
     .textbox-correct:focus {
         outline: 1px solid #32cd56;
     }
@@ -92,27 +133,10 @@
     padding: 5px;
     resize: none;
 }
+
     .textarea-custom:focus {
         outline: 1px solid #f1b5a7;
     }
-
-.my-body {
-    font-size: 14px;
-    color: brown;
-    margin-top: 15px;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.required{
-    color: red;
-}
-
-.space-row{
-    margin-top: 15px;
-}
 
 .custom-control-input:checked ~ .custom-control-label::before {
     border-color: #ff6a00 !important;
@@ -126,38 +150,55 @@
 .checkbox-custom {
     position: static !important;
 }
+/*#endregion */
 
-.dropdown-custom {
-    border: 1px solid #D2691E !important;
+/*#region Css tiện lợi*/
+.bold {
+    font-weight: bold;
 }
 
-.item-custom {
-    font-size: 14px;
-    color: brown;
+.normal {
+    font-weight: normal !important;
 }
-    .item-custom:hover {
-        background-color: #FFFFF0;
-        color: #8B4513;
+
+.required {
+    color: red;
+}
+
+.space-row {
+    margin-top: 15px;
+}
+/*#endregion */
+
+/*#region talbe custom*/
+.table {
+    color: brown !important;
+}
+
+    .table thead th {
+        border-bottom: 2px solid #eda291 !important;
+        border-top: 2px solid #eda291;
+    }
+    .table thead tr {
+        border-left: 2px solid #eda291;
+        border-right: 2px solid #eda291;
+        background: #eda291;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        color: #a31f00;
     }
 
-.nav-custom {
+    .table tr {
+        border-left: 1px solid #eda291;
+        border-right: 1px solid #eda291;
+        border-bottom: 1px solid #eda291;
+    }
+
+tr:hover {
     background-color: #FFFFF0;
 }
 
-.nav-link-custom {
-    color: #CD853F;
-}
-
-a:hover {
-    color: #CD853F !important;
-    font-weight: bold !important;
-    text-decoration: none !important;
-}
-
-.popover-body{
-    color: #ff0000 !important;
-}
-
+/*#endregion */
 
 
 
