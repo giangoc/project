@@ -27,8 +27,12 @@ footer {
     border: 1px solid #D2691E !important;
 }
 
+.popover-body {
+    color: #ff0000 !important;
+}
+
 /*custom các item trên thanh menu */
-.item-custom {
+    .item-custom {
     font-size: 14px;
     color: brown;
 }
@@ -176,26 +180,26 @@ a:hover {
 }
 
     .table thead th {
-        border-bottom: 2px solid #eda291 !important;
-        border-top: 2px solid #eda291;
+        border-bottom: 2px solid #f4c7bd !important;
+        border-top: 2px solid #f4c7bd;
     }
     .table thead tr {
-        border-left: 2px solid #eda291;
-        border-right: 2px solid #eda291;
-        background: #eda291;
+        border-left: 2px solid #f4c7bd;
+        border-right: 2px solid #f4c7bd;
+        background: #f4c7bd;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
         color: #a31f00;
     }
 
     .table tr {
-        border-left: 1px solid #eda291;
-        border-right: 1px solid #eda291;
-        border-bottom: 1px solid #eda291;
+        border-left: 1px solid #f4c7bd;
+        border-right: 1px solid #f4c7bd;
+        border-bottom: 1px solid #f4c7bd;
     }
 
 tr:hover {
-    background-color: #FFFFF0;
+    background-color: #ffe6e6;
 }
 
 /*#endregion */

@@ -56,5 +56,14 @@ namespace CafeManagement.Dao
 
             return excute.ExecuteScalar(query.ToString(), param).ToString();
         }
+
+        public MenuModel GetMenu()
+        {
+            param = new Dictionary<string, object>();
+            query = new StringBuilder();
+
+            query.Append("SELECT Id,Code FROM `menu` ");
+            return (MenuModel)excute.ExecuteScalar(query.ToString());
+        }
     }
 }

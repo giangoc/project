@@ -1,8 +1,6 @@
-﻿using Microsoft.Ajax.Utilities;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 
 namespace CafeManagement.Common
@@ -41,8 +39,11 @@ namespace CafeManagement.Common
             }
         }
 
-        public object ExecuteScalar(string query, Dictionary<string, object> param)
+        public void ExecuteScalar(string query, Dictionary<string, object> param = null)
         {
+
+
+
             MySqlConnection connection = new MySqlConnection();
             connection.ConnectionString = commonParam.connectionString;
             connection.Open();
@@ -50,14 +51,41 @@ namespace CafeManagement.Common
 
             command.Connection = connection;
             command.CommandText = query;
-            for (int i = 0; i < param.Count; i++)
+            if (param != null) 
             {
-                command.Parameters.AddWithValue(param.Keys.ElementAt(i), param[param.Keys.ElementAt(i)]);
+                for (int i = 0; i < param.Count; i++)
+                {
+                    command.Parameters.AddWithValue(param.Keys.ElementAt(i), param[param.Keys.ElementAt(i)]);
+                }
             }
-            object result = command.ExecuteScalar();
+            MySqlDataReader myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                int idProject = Convert.ToInt32(myReader["Id"]);
+                string name = Convert.ToString(myReader["Code"]);
+            }
+            //object result = command.ExecuteScalar();
             connection.Close();
-            return result;
+        }
 
+        public object ExecuteScalar(string query) 
+        {
+            MySqlConnection connection = new MySqlConnection();
+            MySqlDataReader myReader;
+            connection.ConnectionString = commonParam.connectionString;
+            connection.Open();
+
+            MySqlCommand command = new MySqlCommand();
+            command.Connection = connection;
+            command.CommandText = query;
+            myReader = command.ExecuteReader();
+            while (myReader.Read())
+            {
+                int idProject = Convert.ToInt32(myReader["Id"]);
+                string name = Convert.ToString(myReader["Code"]);
+            }
+            connection.Close();
+            return myReader;
         }
     }
 }

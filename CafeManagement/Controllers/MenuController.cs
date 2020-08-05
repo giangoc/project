@@ -14,6 +14,7 @@ namespace CafeManagement.Controllers
         public ActionResult Index()
         {
             ViewBag.Flat = 1;
+            MenuModel model = dao.GetMenu();
             return View();
         }
 
