@@ -39,11 +39,8 @@ namespace CafeManagement.Common
             }
         }
 
-        public void ExecuteScalar(string query, Dictionary<string, object> param = null)
+        public object ExecuteScalar(string query, Dictionary<string, object> param = null)
         {
-
-
-
             MySqlConnection connection = new MySqlConnection();
             connection.ConnectionString = commonParam.connectionString;
             connection.Open();
@@ -51,24 +48,19 @@ namespace CafeManagement.Common
 
             command.Connection = connection;
             command.CommandText = query;
-            if (param != null) 
+            if (param != null)
             {
                 for (int i = 0; i < param.Count; i++)
                 {
                     command.Parameters.AddWithValue(param.Keys.ElementAt(i), param[param.Keys.ElementAt(i)]);
                 }
-            }
-            MySqlDataReader myReader = command.ExecuteReader();
-            while (myReader.Read())
-            {
-                int idProject = Convert.ToInt32(myReader["Id"]);
-                string name = Convert.ToString(myReader["Code"]);
-            }
-            //object result = command.ExecuteScalar();
+            }           
+            object result = command.ExecuteScalar();
             connection.Close();
+            return result;
         }
 
-        public object ExecuteScalar(string query) 
+        public object ExecuteReader(string query, Dictionary<string, object> param = null) 
         {
             MySqlConnection connection = new MySqlConnection();
             MySqlDataReader myReader;
