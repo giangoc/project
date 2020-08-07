@@ -8,10 +8,14 @@ namespace CafeManagement.Common
     public class ExcuteSQL
     {
         public Params commonParam = new Params();
+        CommonModel model;
+        List<CommonModel> listModel;
         public int ExcuteNonQuery(string query, Dictionary<string, object> param)
         {
-            MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = commonParam.connectionString;
+            MySqlConnection connection = new MySqlConnection 
+            {
+                ConnectionString = commonParam.connectionString
+            };
             connection.Open();
             MySqlCommand command = new MySqlCommand ();
             MySqlTransaction trans = connection.BeginTransaction();
@@ -41,13 +45,17 @@ namespace CafeManagement.Common
 
         public object ExecuteScalar(string query, Dictionary<string, object> param = null)
         {
-            MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = commonParam.connectionString;
+            MySqlConnection connection = new MySqlConnection
+            {
+                ConnectionString = commonParam.connectionString
+            };
             connection.Open();
-            MySqlCommand command = new MySqlCommand();
+            MySqlCommand command = new MySqlCommand
+            {
+                Connection = connection,
+                CommandText = query
+            };
 
-            command.Connection = connection;
-            command.CommandText = query;
             if (param != null)
             {
                 for (int i = 0; i < param.Count; i++)
@@ -60,24 +68,32 @@ namespace CafeManagement.Common
             return result;
         }
 
-        public object ExecuteReader(string query, Dictionary<string, object> param = null) 
+        public List<CommonModel> ExecuteReader(string query, Dictionary<string, object> param = null) 
         {
-            MySqlConnection connection = new MySqlConnection();
-            MySqlDataReader myReader;
-            connection.ConnectionString = commonParam.connectionString;
+            model = new CommonModel();
+            listModel = new List<CommonModel>();
+            MySqlConnection connection = new MySqlConnection 
+            {
+                ConnectionString = commonParam.connectionString
+            };
             connection.Open();
-
-            MySqlCommand command = new MySqlCommand();
-            command.Connection = connection;
-            command.CommandText = query;
-            myReader = command.ExecuteReader();
+            MySqlCommand command = new MySqlCommand 
+            {
+                Connection = connection,
+                CommandText = query
+            };
+            MySqlDataReader myReader = command.ExecuteReader();
             while (myReader.Read())
             {
-                int idProject = Convert.ToInt32(myReader["Id"]);
-                string name = Convert.ToString(myReader["Code"]);
+                for (int i = 0; i < myReader.FieldCount; i++)
+                {
+                    model.Add(myReader.GetName(i), myReader.GetValue(i));
+                }
+                listModel.Add(model);
+                model = new CommonModel();
             }
             connection.Close();
-            return myReader;
+            return listModel;
         }
     }
 }

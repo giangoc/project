@@ -1,4 +1,5 @@
-﻿using CafeManagement.Common;
+﻿using AutoMapper;
+using CafeManagement.Common;
 using CafeManagement.Models;
 using System.Collections.Generic;
 using System.Text;
@@ -6,10 +7,11 @@ using System.Text;
 namespace CafeManagement.Dao
 {
     public class MenuDao
-    {
-        ExcuteSQL excute = new ExcuteSQL();
+    {      
         Dictionary<string, object> param;
         StringBuilder query;
+        readonly ExcuteSQL excute = new ExcuteSQL();
+        readonly dynamic mapper = new MapperConfiguration(cfg => { }).CreateMapper();
 
         public int Add(MenuModel model)
         {
@@ -39,7 +41,7 @@ namespace CafeManagement.Dao
             param.Add("Price", model.Price);
             param.Add("Mark", model.Mark);
             param.Add("IsFood", model.IsFood);
-            param.Add("IsActive", model.IsActiveString);
+            param.Add("IsActive", model.IsActive);
 
             return excute.ExcuteNonQuery(query.ToString(), param);
         }
@@ -57,13 +59,21 @@ namespace CafeManagement.Dao
             return excute.ExecuteScalar(query.ToString(), param).ToString();
         }
 
-        public MenuModel GetMenu()
+        public List<MenuModel> GetMenu()
         {
+            List<MenuModel> listMenu = new List<MenuModel>();
             param = new Dictionary<string, object>();
             query = new StringBuilder();
+            
+            query.Append("SELECT * FROM `menu` ORDER BY `Code` ");
+            List<CommonModel> listCommonModel = excute.ExecuteReader(query.ToString());
 
-            query.Append("SELECT Id,Code FROM `menu` ");
-            return (MenuModel)excute.ExecuteScalar(query.ToString());
+            for (int i = 0; i < listCommonModel.Count; i++)
+            {
+                MenuModel modelMenu = mapper.Map<MenuModel>(listCommonModel[i].Values);
+                listMenu.Add(modelMenu);
+            }          
+            return listMenu;
         }
     }
 }

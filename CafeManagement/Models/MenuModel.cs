@@ -10,8 +10,8 @@ namespace CafeManagement.Models
         public float Price { get; set; }
         public string Mark { get; set; }
         public string IsFood { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActiveBool { get; set; }
         public string PriceString { get; set; }
-        public string IsActiveString { get; set; }
+        public string IsActive { get; set; }
     }
 }
