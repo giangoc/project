@@ -9,7 +9,11 @@
         Danh sách đồ ăn/uống
     </label>
     <div class="my-body">
-        <input class="textbox-custom-search" id="searchInput" type="text" placeholder="Tìm kiếm...">
+        <div class="row">
+            <input class="textbox-custom-search" id="searchInput" type="text" placeholder="Tìm kiếm...">
+            &nbsp; &nbsp;
+            <button id="add" type="button" class="btn btn-warning">Thêm mới</button>
+        </div>        
         <table class="table table-borderless space-row">
             <thead>
                 <tr class="d-flex">
@@ -78,24 +82,24 @@
     </div>
 </div>
 <script>
-    //$(document).ready(function () {
-    //    var demo = $('[id^="image"]');
-    //    demo.each(function () {
-    //        var id = "#" + $(this).attr("id");
-    //        // Get the image and insert it inside the modal - use its "alt" text as a caption
-    //        $(id).click(function () {
-    //            $("#imgModal").css({ display: "block" });
-    //            $("#imgZoom").attr('src', $(this).attr('src'));
-    //            $("#caption").html($(this).attr('alt'));
-    //        });
-    //    });
-    //});
-
-    $("#image1").click(function () {
-         $('#modelContent').load("/Menu/Add");
-         $("#imgModal").css({ display: "block" });
-    //            $("#imgZoom").attr('src', $(this).attr('src'));
-    //            $("#caption").html($(this).attr('alt'));
+    $(document).ready(function () {
+        var demo = $('[id^="image"]');
+        demo.each(function () {
+            var id = "#" + $(this).attr("id");
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            $(id).click(function () {
+                $("#imgModal").css({ display: "block" });
+                $("#imgZoom").attr('src', $(this).attr('src'));
+                $("#caption").html($(this).attr('alt'));
             });
+        });
+    });
+
+    $("#add").click(function () {
+        $('#modelContent').load("/Menu/Add");
+        $("#formModal").css({ display: "block" });
+    });
+
+
 </script>
 

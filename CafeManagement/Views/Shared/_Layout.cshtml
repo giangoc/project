@@ -31,35 +31,24 @@
         </ul>
     </nav>
     @{
-//if (ViewBag.Flat == 1)
-//{
-//Format div cho form search
-            <div class="row">
-                <div class="col-md-12" style="padding:10px">
-                    @RenderBody()
-                </div>
+        <div class="row">
+            <div class="col-md-12" style="padding:10px">
+                @RenderBody()
             </div>
-        @*}
-        else
-        {
-            //Format div cho form add,edit
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="container">
-                        @RenderBody()
-                    </div>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-        }*@
+        </div>
+
     }
-<div id="imgModal" class="modal">
-    <div class="modal-content" id="modelContent"></div>
-        @*<img class="modal-content" id="imgZoom">
+    <div id="imgModal" class="modal">
+        <img class="modal-content" id="imgZoom">
             <div class="caption" id="caption"></div>
-            <div class="caption" style="font-style:italic">(Click một lần nữa để đóng)</div>*@
+            <div class="caption" style="font-style:italic">(Click một lần nữa để đóng)</div>
     </div>
+
+    <div id="formModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content" id="modelContent"></div>
+    </div>
+
     <footer class="fixed-bottom">
         <p>&copy; @DateTime.Now.Year - My Application</p>
     </footer>
@@ -69,6 +58,12 @@
 <script>
     $("#imgModal").click(function () {
         $(this).css({ display: "none" });
+    });
+
+    // Get the <span> element that closes the modal
+    var span = $(".close")[0];
+    span.click(function () {
+        $("#formModal").css({ display: "none" });
     });
 </script>
 

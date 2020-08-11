@@ -70,7 +70,9 @@ a:hover {
 /*#endregion */
 
 /*#region input custom*/
-
+button[type="button"], button[type="submit"] {
+    height: 35px;
+}
 .textbox-custom {
     border: 1px solid #d74423;
     border-radius: 4px;
@@ -184,6 +186,10 @@ a:hover {
 .space-row {
     margin-top: 15px;
 }
+.button-height 
+{
+    height:35px;
+}
 /*#endregion */
 
 /*#region talbe custom*/
@@ -236,8 +242,8 @@ tr:hover {
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    width: 70%;
+    height: 70%;
 }
 /* Caption of Modal Image */
 .caption {
