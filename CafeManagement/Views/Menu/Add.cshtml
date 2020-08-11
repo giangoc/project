@@ -1,6 +1,6 @@
 ﻿@model CafeManagement.Models.MenuModel
 @{
-    ViewBag.Title = "Add";
+    Layout = null;
 }
 
 <div class="col-md-12 text-center" id="form">
@@ -34,7 +34,7 @@
                     <label>Giá tiền</label>
                 </div>
                 <div class="col-md-3 text-left">
-                    @Html.TextBoxFor(model => model.PriceString, new { @class = "textbox-custom text-required", maxlength = 6 })
+                    @Html.TextBoxFor(model => model.PriceString, new {@class = "textbox-custom text-required", maxlength = 6 })
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-2 text-right bold">

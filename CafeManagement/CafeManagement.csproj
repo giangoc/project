@@ -181,8 +181,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Image\30x20.png" />
-    <Content Include="Content\Image\60x40.png" />
+    <Content Include="Content\Image\cafe-sua-nong_min.jpg" />
     <Content Include="Content\Image\checkmark-24.png" />
     <Content Include="Content\Image\delete-24.png" />
     <Content Include="Content\Image\edit-24.png" />

@@ -3,13 +3,6 @@
     ViewBag.Title = "Index";
 }
 @model List<CafeManagement.Models.MenuModel>
-<style>
-    #search:hover {
-        -ms-transform: scale(3); /* IE 9 */
-        -webkit-transform: scale(3); /* Safari 3-8 */
-        transform: scale(3);
-    }
-</style>
 <div class="col-md-12 text-left" id="form">
     <label class="my-title">
         <img id="search" src="~/Content/Image/search-55.png" />
@@ -41,11 +34,16 @@
                         <tr style="display:flex">
                             <th class="col-1 normal align-self-center">@i</th>
                             <th class="col-1 normal align-self-center" style="padding:2px !important">
-                                <img id="@idImage" src="~/Content/Image/60x40.png" />
+                                <img class="image-cus" id="@idImage" style="height:40px;width:60px" alt="@temp.Name" src="~/Content/Image/cafe-sua-nong_min.jpg" />
                             </th>
                             <th class="col-1 normal align-self-center">@temp.Code</th>
                             <th class="col-2 normal align-self-center">@temp.Name</th>
-                            <th class="col-1 normal align-self-center">@temp.Price</th>
+                            <th class="col-1 normal align-self-center">
+                                <script>
+                                formatNumber('@temp.Price')
+                                </script>
+
+                            </th>
                             <th class="col-1 normal align-self-center" style="padding-left:25px">
                                 @if (temp.IsFood == "0")
                                 {
@@ -79,6 +77,25 @@
         </table>
     </div>
 </div>
+<script>
+    //$(document).ready(function () {
+    //    var demo = $('[id^="image"]');
+    //    demo.each(function () {
+    //        var id = "#" + $(this).attr("id");
+    //        // Get the image and insert it inside the modal - use its "alt" text as a caption
+    //        $(id).click(function () {
+    //            $("#imgModal").css({ display: "block" });
+    //            $("#imgZoom").attr('src', $(this).attr('src'));
+    //            $("#caption").html($(this).attr('alt'));
+    //        });
+    //    });
+    //});
 
-
+    $("#image1").click(function () {
+         $('#modelContent').load("/Menu/Add");
+         $("#imgModal").css({ display: "block" });
+    //            $("#imgZoom").attr('src', $(this).attr('src'));
+    //            $("#caption").html($(this).attr('alt'));
+            });
+</script>
 

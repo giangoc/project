@@ -31,15 +31,15 @@
         </ul>
     </nav>
     @{
-        if (ViewBag.Flat == 1)
-        {
-            //Format div cho form search
+//if (ViewBag.Flat == 1)
+//{
+//Format div cho form search
             <div class="row">
                 <div class="col-md-12" style="padding:10px">
                     @RenderBody()
                 </div>
             </div>
-        }
+        @*}
         else
         {
             //Format div cho form add,edit
@@ -52,12 +52,23 @@
                 </div>
                 <div class="col-md-2"></div>
             </div>
-        }
+        }*@
     }
-
+<div id="imgModal" class="modal">
+    <div class="modal-content" id="modelContent"></div>
+        @*<img class="modal-content" id="imgZoom">
+            <div class="caption" id="caption"></div>
+            <div class="caption" style="font-style:italic">(Click một lần nữa để đóng)</div>*@
+    </div>
     <footer class="fixed-bottom">
         <p>&copy; @DateTime.Now.Year - My Application</p>
     </footer>
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+    $("#imgModal").click(function () {
+        $(this).css({ display: "none" });
+    });
+</script>
+
