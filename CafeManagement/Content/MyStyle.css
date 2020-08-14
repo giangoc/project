@@ -224,28 +224,52 @@ tr:hover {
 /*#endregion */
 
 /*#region modal custom*/
-/* The Modal (background) */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
 }
-/* Modal Content (image) */
+
+.modal-form {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-left:15%;
+    padding-right:15%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.9);
+}
+
 .modal-content {
     margin: auto;
     display: block;
-    width: 70%;
-    height: 70%;
+    width: inherit;
+    height: inherit;
 }
-/* Caption of Modal Image */
+
+.modal-content-image {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
 .caption {
     margin: auto;
     display: block;
@@ -257,14 +281,40 @@ tr:hover {
     height: 150px;
 }
 
-/* Add Animation */
+
 .modal-content, #caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
 }
-/* The Close Button */
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
 .close {
     position: absolute;
     top: 15px;

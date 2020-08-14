@@ -9,10 +9,10 @@
         Danh sách đồ ăn/uống
     </label>
     <div class="my-body">
-        <div class="row">
+        <div class="row" style="margin-right:0px !important">
             <input class="textbox-custom-search" id="searchInput" type="text" placeholder="Tìm kiếm...">
             &nbsp; &nbsp;
-            <button id="add" type="button" class="btn btn-warning">Thêm mới</button>
+            <button id="add" type="button" class="btn btn-outline-success">Thêm mới</button>
         </div>        
         <table class="table table-borderless space-row">
             <thead>
@@ -42,12 +42,7 @@
                             </th>
                             <th class="col-1 normal align-self-center">@temp.Code</th>
                             <th class="col-2 normal align-self-center">@temp.Name</th>
-                            <th class="col-1 normal align-self-center">
-                                <script>
-                                formatNumber('@temp.Price')
-                                </script>
-
-                            </th>
+                            <th class="col-1 normal align-self-center">@temp.Price</th>
                             <th class="col-1 normal align-self-center" style="padding-left:25px">
                                 @if (temp.IsFood == "0")
                                 {
@@ -83,8 +78,8 @@
 </div>
 <script>
     $(document).ready(function () {
-        var demo = $('[id^="image"]');
-        demo.each(function () {
+        var array = $('[id^="image"]');
+        array.each(function () {
             var id = "#" + $(this).attr("id");
             // Get the image and insert it inside the modal - use its "alt" text as a caption
             $(id).click(function () {
@@ -99,7 +94,5 @@
         $('#modelContent').load("/Menu/Add");
         $("#formModal").css({ display: "block" });
     });
-
-
 </script>
 

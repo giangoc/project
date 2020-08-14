@@ -20,7 +20,7 @@
                     Danh mục
                 </a>
                 <div class="dropdown-menu dropdown-custom">
-                    <a class="dropdown-item item-custom" href="@Url.Action("Add", "Menu")">
+                    <a class="dropdown-item item-custom" href="@Url.Action("Index", "Menu")">
                         <img src="~/Content/Image/food-25.png" />
                         Món ăn
                     </a>
@@ -36,16 +36,17 @@
                 @RenderBody()
             </div>
         </div>
-
     }
+
+
     <div id="imgModal" class="modal">
-        <img class="modal-content" id="imgZoom">
-            <div class="caption" id="caption"></div>
-            <div class="caption" style="font-style:italic">(Click một lần nữa để đóng)</div>
+        <img class="modal-content-image" id="imgZoom">
+        <div class="caption" id="caption"></div>
+        <div class="caption" style="font-style:italic">(Click một lần nữa để đóng)</div>
     </div>
 
-    <div id="formModal" class="modal">
-        <span class="close">&times;</span>
+    <div id="formModal" class="modal-form">
+        <span id="close" class="close">&times;</span>
         <div class="modal-content" id="modelContent"></div>
     </div>
 
@@ -60,9 +61,7 @@
         $(this).css({ display: "none" });
     });
 
-    // Get the <span> element that closes the modal
-    var span = $(".close")[0];
-    span.click(function () {
+    $("#close").click(function () {
         $("#formModal").css({ display: "none" });
     });
 </script>
