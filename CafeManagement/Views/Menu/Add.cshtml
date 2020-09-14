@@ -1,7 +1,7 @@
 ﻿@model CafeManagement.Models.MenuModel
 @{
-    Layout = null;
-    //ViewBag.Title = "Add";
+    //Layout = null;
+    ViewBag.Title = "Add";
 }
 
 <div class="col-md-12 text-center" id="form">
@@ -35,7 +35,7 @@
                     <label>Giá tiền</label>
                 </div>
                 <div class="col-md-3 text-left">
-                    @Html.TextBoxFor(model => model.PriceString, new {@class = "textbox-custom text-required", maxlength = 6 })
+                    @Html.TextBoxFor(model => model.PriceString, new { @class = "textbox-custom text-required", maxlength = 6 })
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-2 text-right bold">
@@ -68,6 +68,17 @@
                 </div>
                 <div class="col-md-9 text-left">
                     @Html.TextAreaFor(model => model.Mark, new { @class = "textarea-custom", maxlength = 255 })
+                </div>
+            </div>
+            <div class="row space-row">
+                <div class="col-md-2 text-right bold">
+                    <label>Hình ảnh</label>
+                </div>
+                <div class="col-md-9 text-left">
+                    <div class="custom-file" style="border: 1px solid #d74423">
+                        <input  type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile">Chọn hình...</label>
+                    </div>
                 </div>
             </div>
             <div class="row space-row">
